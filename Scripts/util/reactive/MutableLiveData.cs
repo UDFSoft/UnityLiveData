@@ -33,7 +33,7 @@ public class MutableLiveData<T> : ILiveData<T>
     public void Observe(MonoBehaviour owner, Action<T> callback)
     {
         _observers.Add((owner, callback));
-        callback(_value); // сразу отправляем текущее значение
+        callback(_value);
     }
 
     public void SetValue(T newValue)
@@ -48,9 +48,9 @@ public class MutableLiveData<T> : ILiveData<T>
         {
             var (owner, callback) = _observers[i];
 
-            if (owner == null) // Если объект уничтожен
+            if (owner == null)
             {
-                _observers.RemoveAt(i); // Убираем "мертвого" подписчика
+                _observers.RemoveAt(i);
             }
             else
             {
