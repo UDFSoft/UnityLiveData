@@ -10,7 +10,16 @@ This lets you observe data changes safely, without needing manual event unsubscr
 - Ideal for MVVM, clean architecture, UI binding, and reactive programming in Unity
 
 🚀 Example:
+
 ```csharp
-healthLiveData.Observe(this, hp => {
-    Debug.Log("Current HP: " + hp);
+public MutableLiveData<int> Health = new();
+// ...
+Health.SetValue(lives);
+```
+
+```csharp
+player.Health.Observe(this, health =>
+{
+    // ...
 });
+```
